@@ -27,8 +27,7 @@
 
 Поскольку результаты выполнения функций кэшируются, то списки для сортировки генерируются случайным образом:
 ```R
-get_random_list <- function(n = NULL) {
-  if (is.null(n)) n = 10
+get_random_list <- function(n = 10) {
   return(sample(1:100, n, replace = TRUE))
 }
 ```
