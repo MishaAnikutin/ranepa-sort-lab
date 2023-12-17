@@ -5,7 +5,7 @@ source("plots.R")
 
 main <- function() {
   data <- test()
-  print(data)
+
   if (is.na(data[2])) print("Все тесты прошли успешно!")
   
   else {
