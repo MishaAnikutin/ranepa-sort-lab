@@ -9,7 +9,7 @@ generate_data <- function(sorting_algorithm, x) {
   #' @param x: Numeric - список размеров случайных списков, по которому будем делать замеры
   #' @return time: Numeric - список времени выполнения функции
   
-  time <- c() 
+  time <- c()
   for (n in x) {
     sa_timer <- timer(sorting_algorithm)
     time <- c(time, sa_timer(get_random_list(n)))
@@ -33,6 +33,9 @@ build_time_plot <- function(xmin = 250, xmax = 3000, step = 250) {
   print("генерируем данные для mergesort")
   y_mergesort <- generate_data(mergesort, x)
   
+  print("генерируем данные для встроенной сортировки")
+  y_built_in <- generate_data(sort, x)
+  
   plot(
     x, y_bubblesort,
     type = "l", 
@@ -44,9 +47,10 @@ build_time_plot <- function(xmin = 250, xmax = 3000, step = 250) {
   lines(x, y_insertsort, type = "l", col = "blue")
   lines(x, y_selectionsort, type = "l", col = "green")
   lines(x, y_mergesort, type = "l", col = "orange")
+  lines(x, y_built_in, type='l', col='black')
   
-  nsquare <- (x)^2 / (4 * 10^7)
-  nlogn <- x * log2(x) / (6 * 10^5)
+  nsquare <- (x)^2 / (5 * 10^7)
+  nlogn <- x * log2(x) / (7 * 10^5)
   
   lines(x, nsquare, col = 'grey', lty = 2, type = "l")
   lines(x, nlogn, col = 'grey', lty = 2)
@@ -60,10 +64,11 @@ build_time_plot <- function(xmin = 250, xmax = 3000, step = 250) {
       "Insert sort",
       "Selection sort",
       "Merge sort",
-      "y = n^2 / (4 * 10^7)",
-      "y = n * log(n) / (6 * 10^5)"
+      "built-in sort",
+      "y = O(n^2)",
+      "y = O(nlog(n))"
       ), 
-    col = c("red", "blue", "green", "orange", "grey", "grey"), 
+    col = c("red", "blue", "green", "orange", "black", "grey", "grey"), 
     lty = 1
   )
 }

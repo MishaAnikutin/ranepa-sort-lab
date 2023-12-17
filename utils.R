@@ -5,7 +5,7 @@ get_random_list <- function(n = NULL) {
   #' @return _: numeric - случайный список
   
   if (is.null(n)) n = 10
-  return(sample(1:100, n, replace = TRUE))
+  return(sample(1:10000, n, replace = TRUE))
 }
 
 

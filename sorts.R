@@ -1,18 +1,17 @@
-bubblesort = function(vec) {
-  n <- length(vec)
-  if (n <= 1) return(vec)
+bubblesort <- function(x){
+  n <- length(x)
   
-  for (i in 1:n) {
-    for (j in i:n) {
-      if ((vec[i] > vec[j])) {
-        tmp <- vec[i]
-        vec[i] <- vec[j]
-        vec[j] <- tmp      
+  for(j in 1:(n - 1)){
+    for(i in 1:(n - j)){
+      if(x[i] > x[i + 1]){
+        temp <- x[i]
+        x[i] <- x[i + 1]
+        x[i + 1] <- temp
       }
     }
   }
   
-  return(vec)
+  return(x)
 }
 
 selectionsort <- function(vec) {
@@ -20,14 +19,14 @@ selectionsort <- function(vec) {
   if (n <= 1) return(vec)
   
   for (i in n:1){
-    max_el_index <- i 
+    min_el_index <- i 
     for (j in 1:i){
-      if (vec[max_el_index] < vec[j]){
-        max_el_index <- j
+      if (vec[min_el_index] < vec[j]){
+        min_el_index <- j
       }
     }
-    tmp <- vec[max_el_index]
-    vec[max_el_index] <- vec[i]
+    tmp <- vec[min_el_index]
+    vec[min_el_index] <- vec[i]
     vec[i] <- tmp
   }
   
@@ -49,6 +48,24 @@ insertsort <- function(vec) {
   }
   return(vec)
 }
+
+insertsort <- function(arr) {
+  n <- length(arr)
+  if (n <= 1) return(arr)  
+  
+  for (i in 2:n){
+    key <- arr[i]  
+    j <- i - 1
+    while (j >= 1 && key < arr[j]){
+      arr[j+1] <- arr[j]
+      j <- j - 1
+    }
+      
+    arr[j+1] <- key 
+  }
+  return(arr)
+}
+
 
 merge <- function(a, b) {
   N <- length(a)

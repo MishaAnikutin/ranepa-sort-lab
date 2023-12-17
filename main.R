@@ -5,7 +5,7 @@ source("plots.R")
 
 main <- function() {
   data <- test()
-  
+  print(data)
   if (is.na(data[2])) print("Все тесты прошли успешно!")
   
   else {
@@ -14,8 +14,9 @@ main <- function() {
   }
   
   print("Строим график")
-  build_time_plot(xmin = 250, xmax = 10000, step = 1000)
+  build_time_plot(xmin = 100, xmax = 5000, step = 500)
   print("График построен")
 }
 
 main()
+

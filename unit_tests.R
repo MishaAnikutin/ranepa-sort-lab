@@ -50,7 +50,7 @@ test <- function() {
   print("Тестируем mergesort")
   data <- test_sort(mergesort)
   if (!is.na(data[2])) exc <- c("\tmergesort не прошла тест\n", data[2])
-  
+  print(1)
   return(c(is.null(exc), exc))
 }
 
